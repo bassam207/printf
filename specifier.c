@@ -5,7 +5,7 @@
 * @s: format str
 * Return: number of bytes printed
 */
-int (*get_specifier(char *s))(va_list p, params_t *    params)
+int (*get_specifier(char *s))(va_list p, params_t  * params)
 {
 	specifier_t specifiers[] = {
 		{"c", print_char},
@@ -44,7 +44,7 @@ int (*get_specifier(char *s))(va_list p, params_t *    params)
 * @params: parameters struct
 * Return: number of bytes printed
 */
-int get_print_func(char *s, va_list p, params_t *pa    rams)
+int get_print_func(char *s, va_list p, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
 	
@@ -90,7 +90,7 @@ int get_flag(char *s, params_t *params)
 * @params: parameters struct
 * Return: if modifier was valid
 */
-int get_modifier(char *s, params_t *params    )
+int get_modifier(char *s, params_t *params)
 {
 	int i = 0;
 
@@ -113,7 +113,7 @@ int get_modifier(char *s, params_t *params    )
 * @p: the arg pointer
 * Rturn: new pointer
 */
-char *get_width(char *s, params_t *params,     va_list p)
+char *get_width(char *s, params_t *params, va_list p)
 {
 	int w = 0;
 
