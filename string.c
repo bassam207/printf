@@ -7,7 +7,7 @@
 * @p: arg pointer
 * Return: new pointer
 */
-char *get_precision(char *p, params_t *par    ams, va_list a)
+char *get_precision(char *p, params_t  *params, va_list a)
 {
 	int d = 0;
 

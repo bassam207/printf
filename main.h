@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
 
@@ -36,8 +37,8 @@ typedef struct paramter
 	unsigned int hash_flag : 1;
 	unsigned int zero_flag : 1;
 	unsigned int minus_flag : 1;
-	unsigned int width : 1;
-	unsigned int percision : 1;
+	unsigned int width;
+	unsigned int precision;
 	unsigned int h_modifier : 1;
 	unsigned int one_modifier : 1;
 } params_t;
@@ -89,10 +90,10 @@ int print_num(char *str, params_t *params);
 int print_num_r_shift(char *str, params_t *params);int print_num_l_shift(char *str, params_t *params);
 
 /* params.c module */
-void init_params(params_t *params, va_lits p);
+void init_params(params_t *params, va_list p);
 
 /* string_fields.c module */
-char *get_precision(char *p, params_t *params, va_list p);
+char *get_precision(char *c, params_t *params, va_list p);
 
 /* _printf.c module */
 int _printf(const char *format, ...);
