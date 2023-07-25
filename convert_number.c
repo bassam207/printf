@@ -94,7 +94,7 @@ int print_binary(va_list p, params_t *params)
  * Return: bytes printed
 */
 
-int priny_octal(va_list p, params_t *params)
+int print_octal(va_list p, params_t *params)
 {
 	unsigned long one;
 	char *str;

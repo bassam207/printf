@@ -70,7 +70,7 @@ int print_num(char *str, params_t *params)
  * Return: chars printed
 */
 
-int print_num_right_shift(char *str, params_t *params)
+int print_num_r_shift(char *str, params_t *params);int print_num_l_shift(char *str, params_t *params)
 {
 	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
@@ -136,11 +136,3 @@ int print_number_left_shift(char *str, params_t *params)
 		n += _putchar(pad_char);
 	return (n);
 }
-
-
-
-
-
-
-
-

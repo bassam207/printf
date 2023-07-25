@@ -54,7 +54,7 @@ int print_int(va_list p, params_t *params)
  * Return: number chars printed
 */
 
-int print_string(va_list p, params_t *params)
+int print_str(va_list p, params_t *params)
 {
 	char *str = va_arg(p, char *), pad_char = ' ';
 	unsigned int pad = 0, sum = 0, i = 0, j;
@@ -98,7 +98,7 @@ int print_string(va_list p, params_t *params)
  * Return: number chars printed
 */
 
-int prunt_percrnt(va_list p, params_t *params)
+int print_percent(va_list p, params_t *params)
 {
 	(void)p;
 	(void)params;
