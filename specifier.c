@@ -5,7 +5,8 @@
 * @s: format str
 * Return: number of bytes printed
 */
-int (*get_specifier(char *s))(va_list p, params_t  * params)
+
+int (*get_specifier(char *s))(va_list p, params_t *params)
 {
 	specifier_t specifiers[] = {
 		{"c", print_char},
@@ -19,7 +20,6 @@ int (*get_specifier(char *s))(va_list p, params_t  * params)
 		{"X", print_HEX},
 		{"x", print_hex},
 		{"p", print_address},
-		{"s", print_s},
 		{"r", print_rev},
 		{"R", print_rot13},
 		{NULL, NULL}
@@ -28,7 +28,7 @@ int (*get_specifier(char *s))(va_list p, params_t  * params)
 
 	while (specifiers[i].specifier)
 	{
-		if (*s == specifiers[i].specifier[0])
+		if (strcmp(s, specifiers[i].specifier) == 0)
 		{
 			return (specifiers[i].f);
 		}
@@ -36,6 +36,7 @@ int (*get_specifier(char *s))(va_list p, params_t  * params)
 	}
 	return (NULL);
 }
+
 
 /**
 * get_print_func - finds format function
