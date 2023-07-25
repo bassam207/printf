@@ -6,7 +6,7 @@
 * Return: number of bytes printed
 */
 
-int (*get_specifier(char *s))(va_list p, params_t  * params)
+int (*get_specifier(char *s))(va_list p, params_t *params)
 {
 	specifier_t specifiers[] = {
 		{"c", print_char},
@@ -48,7 +48,7 @@ int (*get_specifier(char *s))(va_list p, params_t  * params)
 int get_print_func(char *s, va_list p, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
-	
+
 	if (f)
 		return (f(p, params));
 	return (0);
@@ -112,7 +112,7 @@ int get_modifier(char *s, params_t *params)
 * @s: format str
 * @params: the parameters struct
 * @p: the arg pointer
-* Rturn: new pointer
+* Return: new pointer
 */
 char *get_width(char *s, params_t *params, va_list p)
 {

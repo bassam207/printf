@@ -3,11 +3,11 @@
 /**
  * print_from_to - prints a range of char addresses
  *
- * @starts: starting address
+ * @start: starting address
  * @stop: stopping address
  * @except: except address
  *
- * Retuen: number bytes printed
+ * Return: number bytes printed
 */
 
 int print_from_to(char *start, char *stop, char *except)
@@ -24,9 +24,9 @@ int print_from_to(char *start, char *stop, char *except)
 }
 
 /**
- * prints_rev - prints string in revrse
+ * print_rev - prints string in revrse
  *
- * @ap: string
+ * @p: string
  * @params: the parameters struct
  *
  * Return: number bytes printed
@@ -52,7 +52,7 @@ int print_rev(va_list p, params_t *params)
 /**
  * print_rot13 - prints string in rot13
  *
- * @ap: string
+ * @p: string
  * @params: the parameters struct
  *
  * Return: numbers bytes printed

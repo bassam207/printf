@@ -12,7 +12,7 @@
 int print_char(va_list p, params_t *params)
 {
 	char pad_char = ' ';
-	unsigned int pad = 1, sum = 0,ch = va_arg(p, int);
+	unsigned int pad = 1, sum = 0, ch = va_arg(p, int);
 
 	if (params->minus_flag)
 		sum += _putchar(ch);
@@ -29,13 +29,13 @@ int print_char(va_list p, params_t *params)
  * @p: argument pointer
  * @params: the parameters struct
  *
- * Retrun: number chars printed
+ * Return: number chars printed
 */
 
 int print_int(va_list p, params_t *params)
 {
 	long one;
-	
+
 	if (params->one_modifier)
 		one = va_arg(p, long);
 	else if (params->h_modifier)
@@ -48,13 +48,13 @@ int print_int(va_list p, params_t *params)
 /**
  * print_string - prints string
  *
- * @P: argument pointer
+ * @p: argument pointer
  * @params: the parameter struct
  *
  * Return: number chars printed
 */
 
-int print_str(va_list p, params_t *params)
+int print_string(va_list p, params_t *params)
 {
 	char *str = va_arg(p, char *), pad_char = ' ';
 	unsigned int pad = 0, sum = 0, i = 0, j;

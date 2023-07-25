@@ -22,7 +22,7 @@ int print_hex(va_list p, params_t *params)
 	else
 		one = (unsigned int)va_arg(p, unsigned int);
 
-	str = convert(one,16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
+	str = convert(one, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
 	if (params->hash_flag && 1)
 	{
 		*--str = 'x';
@@ -34,7 +34,7 @@ int print_hex(va_list p, params_t *params)
 }
 
 /**
- * print_Hex - prints unsigned hex numbers in uppercase
+ * print_HEX - prints unsigned hex numbers in uppercase
  *
  * @p: the argument pointer
  * @params: the argument struct
