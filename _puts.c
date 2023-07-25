@@ -1,24 +1,28 @@
 #include "main.h"
 
 /**
-* _puts - prints str with newline
-* @str: str tp print
+* _puts - prints a string with a newline
+*
+* @str: the string to print
+*
 * Return: void
 */
 int _puts(char *str)
 {
-	char *s = str;
+	char *a = str;
 
 	while (*str)
 		_putchar(*str++);
-	return (str - s);
+	return (str - a);
 }
 
 /**
-* _putchar - print char c to stdout
-* @c: the char to print
-* Return: 1 on success
-* on error, -1
+* _putchar - writes the character c to stdout
+*
+* @c: the character to print
+*
+* Return: on (success) 1
+*	on error, -1 is returned, and errno is set appropriately
 */
 int _putchar(int c)
 {
