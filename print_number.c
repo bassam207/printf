@@ -16,18 +16,51 @@ int _isdigit(int c)
 /**
  * _strlen - returns the length of a string
  *
- * @s: the string whose length of string
+ * @s: the string whose length to check
  *
- * Return: string
+ * Return: integer length of string
 */
 
 int _strlen(char *s)
 {
-	int k = 0;
+	int i = 0;
 
 	while (*s++)
-		k++;
-	return (k);
+		i++;
+	return (i);
+}
+
+/**
+* print_num - prints a number with options
+*
+* @str: the base number as a string
+* @params: the paramrter struct
+*
+* Return: char printed
+*/
+
+int print_num(char *str, params_t *params)
+{
+	unsigned int i = _strlen(str);
+	int neg = (!params->unsign && *str == '-');
+
+	if (!params->precision && *str == '0' && !str[1])
+		str = "";
+	if (neg)
+	{
+		str++;
+		i--;
+	}
+	if (params->precision != UINT_MAX)
+	while (i++ < params->precision)
+		*--str = '0';
+	if (neg)
+		*--str = '-';
+
+        if (!params->minus_flag)
+		return (print_num_r_shift(str, params));
+	else
+		return (print_num_left_shift(str, params));
 }
 
 /**
@@ -106,35 +139,3 @@ int print_num_left_shift(char *str, params_t *params)
 	return (n);
 }
 
-/**
-* print_num - prints a number with options
-*
-* @str: the base number as a string
-* @params: the paramrter struct
-*
-* Return: char printed
-*/
-
-int print_num(char *str, params_t *params)
-{
-	unsigned int i = _strlen(str);
-	int neg = (!params->unsign && *str == '-');
-
-	if (!params->precision && *str == '0' && !str[1])
-		str = "";
-	if (neg)
-	{
-		str++;
-		i--;
-	}
-	if (params->precision != UINT_MAX)
-		while (i++ < params->precision)
-			*--str = '0';
-	if (neg)
-		*--str = '-';
-
-	if (!params->minus_flag)
-		return (print_num_r_shift(str, params));
-	else
-		return (print_num_left_shift(str, params));
-}

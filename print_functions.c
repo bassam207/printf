@@ -34,15 +34,15 @@ int print_char(va_list p, params_t *params)
 
 int print_int(va_list p, params_t *params)
 {
-	long one;
+	long l;
 
-	if (params->one_modifier)
-		one = va_arg(p, long);
+	if (params->l_modifier)
+		l = va_arg(p, long);
 	else if (params->h_modifier)
-		one = (short int)va_arg(p, int);
+		l = (short int)va_arg(p, int);
 	else
-		one = (int)va_arg(p, int);
-	return (print_num(convert(one, 10, 0, params), params));
+		l = (int)va_arg(p, int);
+	return (print_num(convert(1, 10, 0, params), params));
 }
 
 /**

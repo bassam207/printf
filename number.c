@@ -50,20 +50,21 @@ char *convert(long int num, int base, int flags, params_t *params)
 
 int print_unsigned(va_list p, params_t *params)
 {
-	unsigned long one;
+	unsigned long l;
 
-	if (params->one_modifier)
-		one = (unsigned long)va_arg(p, unsigned long);
+	if (params->l_modifier)
+		l = (unsigned long)va_arg(p, unsigned long);
 	else if (params->h_modifier)
-		one = (unsigned short int)va_arg(p, unsigned int);
+		l  = (unsigned short int)va_arg(p, unsigned int);
 	else
-		one = (unsigned int)va_arg(p, unsigned int);
+		l  = (unsigned int)va_arg(p, unsigned int);
 	params->unsign = 1;
-	return (print_num(convert(one, 10, CONVERT_UNSIGNED, params), params));
+	return (print_number(convert(l, 10, CONVERT_UNSIGNED, params), params));
 }
 
 /**
  * print_address - prints address
+ *
  * @p: argument pointer
  * @params: the parameters struct
  *
@@ -82,5 +83,5 @@ int print_address(va_list p, params_t *params)
 	str = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
 	*--str = 'x';
 	*--str = '0';
-	return (print_num(str, params));
+	return (print_number(str, params));
 }

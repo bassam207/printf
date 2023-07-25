@@ -11,19 +11,19 @@
 
 int print_hex(va_list p, params_t *params)
 {
-	unsigned long one;
+	unsigned long l;
 	int c = 0;
 	char *str;
 
 	if (params->one_modifier)
-		one = (unsigned long)va_arg(p, unsigned long);
+		l = (unsigned long)va_arg(p, unsigned long);
 	else if (params->h_modifier)
-		one = (unsigned short int)va_arg(p, unsigned int);
+		l = (unsigned short int)va_arg(p, unsigned int);
 	else
-		one = (unsigned int)va_arg(p, unsigned int);
+		l  = (unsigned int)va_arg(p, unsigned int);
 
-	str = convert(one, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
-	if (params->hash_flag && 1)
+	str = convert(l, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
+	if (params->hashtag_flag && l)
 	{
 		*--str = 'x';
 		*--str = '0';
@@ -39,24 +39,24 @@ int print_hex(va_list p, params_t *params)
  * @p: the argument pointer
  * @params: the argument struct
  *
- * Return:bytes printed
+ * Return: bytes printed
 */
 
 int print_HEX(va_list p, params_t *params)
 {
-	unsigned long one;
+	unsigned long l;
 	int c = 0;
 	char *str;
 
-	if (params->one_modifier)
-		one = (unsigned long)va_arg(p, unsigned long);
+	if (params->l_modifier)
+		l = (unsigned long)va_arg(p, unsigned long);
 	else if (params->h_modifier)
-		one = (unsigned short int)va_arg(p, unsigned int);
+		l = (unsigned short int)va_arg(p, unsigned int);
 	else
-		one = (unsigned int)va_arg(p, unsigned int);
+		l = (unsigned int)va_arg(p, unsigned int);
 
-	str = convert(one, 16, CONVERT_UNSIGNED, params);
-	if (params->hash_flag && 1)
+	str = convert(l, 16, CONVERT_UNSIGNED, params);
+	if (params->hash_flag && l)
 	{
 		*--str = 'x';
 		*--str = '0';
@@ -79,7 +79,7 @@ int print_binary(va_list p, params_t *params)
 	char *str = convert(n, 2, CONVERT_UNSIGNED, params);
 	int c = 0;
 
-	if (params->hash_flag && n)
+	if (params->hashtag_flag && n)
 		*--str = '0';
 	params->unsign = 1;
 	return (c += print_num(str, params));
@@ -96,19 +96,19 @@ int print_binary(va_list p, params_t *params)
 
 int print_octal(va_list p, params_t *params)
 {
-	unsigned long one;
+	unsigned long l;
 	char *str;
 	int c = 0;
 
-	if (params->one_modifier)
-		one = (unsigned long)va_arg(p, unsigned long);
+	if (params->l_modifier)
+		l = (unsigned long)va_arg(p, unsigned long);
 	else if (params->h_modifier)
-		one = (unsigned short int)va_arg(p, unsigned int);
+		l = (unsigned short int)va_arg(p, unsigned int);
 	else
-		one = (unsigned int)va_arg(p, unsigned int);
-	str = convert(one, 8, CONVERT_UNSIGNED, params);
+		l = (unsigned int)va_arg(p, unsigned int);
+	str = convert(l, 8, CONVERT_UNSIGNED, params);
 
-	if (params->hash_flag && one)
+	if (params->hashtag_flag && l)
 		*str = '0';
 	params->unsign = 1;
 	return (c += print_num(str, params));
