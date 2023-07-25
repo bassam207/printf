@@ -88,7 +88,7 @@ int _isdigit(int c);
 int _strlen(char *s);
 int print_num(char *str, params_t *params);
 int print_num_r_shift(char *str, params_t *params);int print_num_l_shift(char *str, params_t *params);
-int print_number_left_shift(char *str, params_t *params)
+int print_num_left_shift(char *str, params_t *params);
 /* params.c module */
 void init_params(params_t *params, va_list *p);
 

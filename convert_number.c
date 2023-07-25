@@ -72,7 +72,6 @@ int print_HEX(va_list p, params_t *params)
  *
  * Return: bytes printed
 */
-
 int print_binary(va_list p, params_t *params)
 {
 	unsigned int n = va_arg(p, unsigned int);
