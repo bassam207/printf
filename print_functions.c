@@ -12,7 +12,7 @@
 int print_char(va_list ap, params_t *params)
 {
 	char pad_char = ' ';
-	unsigned int pad = 1, sum = 0, ch = va_arg(p, int);
+	unsigned int pad = 1, sum = 0, ch = va_arg(ap, int);
 
 	if (params->minus_flag)
 		sum += _putchar(ch);
@@ -65,12 +65,12 @@ int print_string(va_list ap, params_t *params)
 		str = NULL_STRING;
 
 	j = pad = _strlen(str);
-	if (params->precision < pad)
-		j = pad = params->precision;
+	if (params->percision < pad)
+		j = pad = params->percision;
 
 	if (params->minus_flag)
 	{
-		if (params->precision != UINT_MAX)
+		if (params->percision != UINT_MAX)
 			for (i = 0; i < pad; i++)
 				sum += _putchar(*str++);
 		else
@@ -80,7 +80,7 @@ int print_string(va_list ap, params_t *params)
 		sum += _putchar(pad_char);
 	if (!params->minus_flag)
 	{
-		if (params->precision != UINT_MAX)
+		if (params->percision != UINT_MAX)
 			for (i = 0; i < pad; i++)
 				sum += _putchar(*str++);
 		else
@@ -114,7 +114,7 @@ int print_percent(va_list ap, params_t *params)
  * Return: number chars printed
 */
 
-int print_S(va_list p, params_t *params)
+int print_S(va_list ap, params_t *params)
 {
 	char *str = va_arg(ap, char *);
 	char *hex;
