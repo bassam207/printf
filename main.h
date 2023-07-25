@@ -90,7 +90,7 @@ int print_num(char *str, params_t *params);
 int print_num_r_shift(char *str, params_t *params);int print_num_l_shift(char *str, params_t *params);
 
 /* params.c module */
-void init_params(params_t *params, va_list p);
+void init_params(params_t *params, va_list *p);
 
 /* string_fields.c module */
 char *get_precision(char *c, params_t *params, va_list p);

@@ -50,16 +50,16 @@ char * convert(long int num, int base, int flags, params_t *params)
 
 int print_unsigned(va_list p, params_t *params)
 {
-	unsigned long l;
+	unsigned long one;
 
-	if (params->l_modifier)
-		l = (unsigned long)va_arg(p, unsigned long);
+	if (params->one_modifier)
+		one = (unsigned long)va_arg(p, unsigned long);
 	else if (params->h_modifier)
-		l = (unsigned short int)va_arg(p, unsigned int);
+		one = (unsigned short int)va_arg(p, unsigned int);
 	else
-		= (unsigned int)va_arg(p, unsigned int);
+		one = (unsigned int)va_arg(p, unsigned int);
 	params->unsign = 1;
-	return (print_number(convert(1, 10, CONVRT_UNSIGNED, params), params));
+	return (print_num(convert(one, 10, CONVERT_UNSIGNED, params), params));
 }
 
 /**
@@ -76,10 +76,11 @@ int print_address(va_list p, params_t *params)
 	char *str;
 
 	if (!n)
-		return (_puts("(nil)");
-
+	{
+		return (_puts("(nil)"));
+	}
 	str = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
 	*--str = 'x';
 	*--str = '0';
-	return (print_number(str, params));
+	return (print_num(str, params));
 }

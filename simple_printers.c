@@ -14,7 +14,7 @@ int print_from_to(char *start, char *stop, char *except)
 {
 	int sum = 0;
 
-	while (stsrt <= stop)
+	while (start <= stop)
 	{
 		if (start != except)
 			sum += _putchar(*start);
@@ -32,7 +32,7 @@ int print_from_to(char *start, char *stop, char *except)
  * Return: number bytes printed
 */
 
-int print_rev(va_list p, params_ *params)
+int print_rev(va_list p, params_t *params)
 {
 	int len, sum = 0;
 	char *str = va_arg(p, char *);
@@ -60,7 +60,7 @@ int print_rev(va_list p, params_ *params)
 
 int print_rot13(va_list p, params_t *params)
 {
-	int k, index;
+	int i, index;
 	int count = 0;
 
 	char arr[] =
@@ -68,9 +68,9 @@ int print_rot13(va_list p, params_t *params)
 	char *a = va_arg(p, char *);
 	(void)params;
 
-	k = 0;;
+	i = 0;
 	index = 0;
-	while (a[k])
+	while (a[i])
 	{
 		if ((a[i] >= 'A' && a[i] <= 'Z')
 			|| (a[i] >= 'a' && a[i] <= 'z'))

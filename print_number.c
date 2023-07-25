@@ -49,16 +49,16 @@ int print_num(char *str, params_t *params)
 		str++;
 		i--;
 	}
-	if (params->prscision != UINT_MAX)
+	if (params->precision != UINT_MAX)
 		while (i++ < params->precision)
 			*--str = '0';
 	if (neg)
 		*--str = '-';
 
 	if (!params->minus_flag)
-		return (print_num_right_shift(str, params));
+		return (print_num_r_shift(str, params));
 	else
-		return (print_num_left_shift(str, params));
+		return (print_num_l_shift(str, params));
 }
 
 /**
@@ -72,13 +72,13 @@ int print_num(char *str, params_t *params)
 
 int print_num_right_shift(char *str, params_t *params)
 {
-	unsigned int n = 0, neg, i = _strlen(str);
+	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->zero_flag && !params->minus_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsign && *str == '-');
-	if (neg && i < params->width && pad_char == '0' !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0'&& !params->minus_flag)
 		str++;
 	else
 		neg = 0;
@@ -89,7 +89,7 @@ int print_num_right_shift(char *str, params_t *params)
 		n += _putchar('-');
 	if (params->plus_flag && !neg2 && pad_char == '0' && !params->unsign)
 		n += _putchar('+');
-	else if (!params->plus_flag && params->spaceflag && !neg2 &&
+	else if (!params->plus_flag && params->space_flag && !neg2 &&
 			!params->unsign && params->zero_flag)
 		n += _putchar(' ');
 	while (i++ < params->width)
