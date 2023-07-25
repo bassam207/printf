@@ -29,6 +29,7 @@ int print_hex(va_list p, params_t *params)
 		*--str = '0';
 	}
 	params->unsign = 1;
+
 	return (c += print_num(str, params));
 }
 
