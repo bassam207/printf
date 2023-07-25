@@ -12,10 +12,10 @@
 int print_char(va_list p, params_t *params)
 {
 	char pad_char = ' ';
-	unsigned int pad = 1, sum = 0, va_arg(p, int);
+	unsigned int pad = 1, sum = 0,ch = va_arg(p, int);
 
 	if (params->minus_flag)
-		sum += _puthcar(ch);
+		sum += _putchar(ch);
 	while (pad++ < params->width)
 		sum += _putchar(pad_char);
 	if (!params->minus_flag)
@@ -34,15 +34,15 @@ int print_char(va_list p, params_t *params)
 
 int print_int(va_list p, params_t *params)
 {
-	long l;
+	long one;
 	
-	if (params->l_modifier)
-		l = va_arg(p, long);
+	if (params->one_modifier)
+		one = va_arg(p, long);
 	else if (params->h_modifier)
-		l = (short int)va_arg(p, int);
+		one = (short int)va_arg(p, int);
 	else
-		l = (int)va_arg(p, int);
-	return (print_number(convert(l, 10, 0, params), params));
+		one = (int)va_arg(p, int);
+	return (print_num(convert(one, 10, 0, params), params));
 }
 
 /**
@@ -54,10 +54,10 @@ int print_int(va_list p, params_t *params)
  * Return: number chars printed
 */
 
-int print_string(va_list p, params_t *params)
+int print_str(va_list p, params_t *params)
 {
 	char *str = va_arg(p, char *), pad_char = ' ';
-	unsigned int pad = 0, sum 0, i = 0, j;
+	unsigned int pad = 0, sum = 0, i = 0, j;
 
 	(void)params;
 	switch ((int)(!str))
@@ -80,7 +80,7 @@ int print_string(va_list p, params_t *params)
 		sum += _putchar(pad_char);
 	if (!params->minus_flag)
 	{
-		if (params->precision != UNIT_MAX)
+		if (params->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
 				sum += _putchar(*str++);
 		else
@@ -98,7 +98,7 @@ int print_string(va_list p, params_t *params)
  * Return: number chars printed
 */
 
-int prunt_percrnt(va_list p, params_t *params)
+int print_percent(va_list p, params_t *params)
 {
 	(void)p;
 	(void)params;

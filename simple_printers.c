@@ -1,4 +1,4 @@
-#include"main.h"
+#include "main.h"
 
 /**
  * print_from_to - prints a range of char addresses
@@ -60,7 +60,7 @@ int print_rev(va_list p, params_t *params)
 
 int print_rot13(va_list p, params_t *params)
 {
-	int k, index;
+	int i, index;
 	int count = 0;
 
 	char arr[] =
@@ -68,9 +68,9 @@ int print_rot13(va_list p, params_t *params)
 	char *a = va_arg(p, char *);
 	(void)params;
 
-	k = 0;;
+	i = 0;
 	index = 0;
-	while (a[k])
+	while (a[i])
 	{
 		if ((a[k] >= 'A' && a[k] <= 'Z')
 			|| (a[k] >= 'a' && a[k] <= 'z'))

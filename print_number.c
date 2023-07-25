@@ -29,39 +29,6 @@ int _strlen(char *s)
 }
 
 /**
- * print_num - prints a number with options
- *
- * @str: the base number as a string
- * @params: the paramrter struct
- *
- * Return: char printed
-*/
-
-int print_num(char *str, params_t *params)
-{
-	unsigned int i = _strlen(str);
-	int neg = (!params->unsign && *str == '-');
-
-	if (!params->precision && *str == '0' && !str[1])
-		str = "";
-	if (neg)
-	{
-		str++;
-		i--;
-	}
-	if (params->prscision != UINT_MAX)
-		while (i++ < params->precision)
-			*--str = '0';
-	if (neg)
-		*--str = '-';
-
-	if (!params->minus_flag)
-		return (print_num_right_shift(str, params));
-	else
-		return (print_num_left_shift(str, params));
-}
-
-/**
  * print_num_right_shift - prints a number with options
  *
  * @str: the base number as a string
@@ -70,15 +37,15 @@ int print_num(char *str, params_t *params)
  * Return: chars printed
 */
 
-int print_num_right_shift(char *str, params_t *params)
+int print_num_r_shift(char *str, params_t *params)
 {
-	unsigned int n = 0, neg, i = _strlen(str);
+	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->zero_flag && !params->minus_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsign && *str == '-');
-	if (neg && i < params->width && pad_char == '0' !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0'&& !params->minus_flag)
 		str++;
 	else
 		neg = 0;
@@ -89,7 +56,7 @@ int print_num_right_shift(char *str, params_t *params)
 		n += _putchar('-');
 	if (params->plus_flag && !neg2 && pad_char == '0' && !params->unsign)
 		n += _putchar('+');
-	else if (!params->plus_flag && params->spaceflag && !neg2 &&
+	else if (!params->plus_flag && params->space_flag && !neg2 &&
 			!params->unsign && params->zero_flag)
 		n += _putchar(' ');
 	while (i++ < params->width)
@@ -114,7 +81,7 @@ int print_num_right_shift(char *str, params_t *params)
  * Return: chars printed
 */
 
-int print_number_left_shift(char *str, params_t *params)
+int print_num_left_shift(char *str, params_t *params)
 {
 	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
@@ -137,10 +104,35 @@ int print_number_left_shift(char *str, params_t *params)
 	return (n);
 }
 
+/**
+* print_num - prints a number with options
+*
+* @str: the base number as a string
+* @params: the paramrter struct
+*
+* Return: char printed
+*/
 
+int print_num(char *str, params_t *params)
+{
+	unsigned int i = _strlen(str);
+	int neg = (!params->unsign && *str == '-');
 
+	if (!params->precision && *str == '0' && !str[1])
+		str = "";
+	if (neg)
+	{
+		str++;
+		i--;
+	}
+	if (params->precision != UINT_MAX)
+		while (i++ < params->precision)
+			*--str = '0';
+	if (neg)
+		*--str = '-';
 
-
-
-
-
+	if (!params->minus_flag)
+		return (print_num_r_shift(str, params));
+	else
+		return (print_num_left_shift(str, params));
+}

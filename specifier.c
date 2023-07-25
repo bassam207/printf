@@ -21,7 +21,7 @@ int (*get_specifier(char *s))(va_list p, params_t  * params)
 		{"p", print_address},
 		{"s", print_s},
 		{"r", print_rev},
-		{"R", print_rot},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	int i = 0;
